@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@700&family=Outfit:wght@300;400;600&display=swap');
+
 /*
 
 @layer components {
@@ -11,3 +13,11 @@
 }
 
 */
+
+body {
+  font-family: 'Proxima Nova', 'Inter', sans-serif;
+}
+
+#splash h1 {
+  font-family: 'Hind Siliguri', sans-serif;
+}
