@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Finans Flux</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="FinansFlux is a robust financial application built on a Postgres database, fortified by Devise authentication for security. It empowers users with features like transaction categorization, real-time expense tracking, and intuitive category creation.">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= favicon_link_tag 'favicon.ico' %>
+    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true, type: "module" %>
+  </head>
+
+  <body>
+    <main class="container mx-auto mt-28 px-5 flex">
+      <%= yield %>
+    </main>
+  </body>
+</html>
