@@ -21,3 +21,21 @@ body {
 #splash h1 {
   font-family: 'Hind Siliguri', sans-serif;
 }
+
+[multiple]:focus,
+[type=email]:focus,
+[type=number]:focus,
+[type=password]:focus,
+[type=text]:focus,
+select:focus,
+textarea:focus {
+  --tw-ring-inset:
+    var(
+      --tw-empty,
+      /*!*/
+      /*!*/
+    );
+  --tw-ring-offset-width: 0;
+  --tw-ring-offset-color: transparent;
+  --tw-ring-color: transparent;
+}
