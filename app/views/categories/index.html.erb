@@ -1,0 +1,21 @@
+<div class="col-12 main_con">
+  <div>
+    <% if @categories.any? %>
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <ul>
+        <% @categories.each do |category| %>
+          <li><%= category.name %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No categories found.</p>
+    <% end %>
+  </div>
+
+<% if user_signed_in? %>
+        <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "relative md:ml-4 text-white font-semibold w-full px-4 py-2 bg-red-600 hover:bg-red-800 hover:no-underline" %>
+        <% end %>
+
+</div>

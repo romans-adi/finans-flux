@@ -10,9 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_10_032529) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_11_002335) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "entities", force: :cascade do |t|
     t.string "name"
@@ -30,6 +37,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_10_032529) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.string "description"
+    t.decimal "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_transactions_on_category_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -44,4 +60,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_10_032529) do
   end
 
   add_foreign_key "entities", "users", column: "author_id"
+  add_foreign_key "transactions", "categories"
 end

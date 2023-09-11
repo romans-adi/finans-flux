@@ -1,0 +1,27 @@
+<div class="bg-main text-white text-center py-6 flex">
+  <div class="flex justify-center relative items-center w-full">
+    <a href="<%= splash_root_path %>" class="text-white ml-2 absolute left-0 pl-2 cursor-pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block align-middle" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+      </svg>
+    </a>
+    <h2>Register</h2>
+  </div>
+</div>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.submit "Next", class: "absolute right-0 pr-2 bg-main text-white px-4 rounded hover:cursor-pointer top-6" %>
+  <div class="py-4 text-gray-400">
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="border-b border-gray-400 mb-4 outline-none">
+      <%= f.text_field :name, placeholder: "Full Name", class: "w-full py-2 border-none text-text outline-transparent" %>
+    </div>
+    <div class="border-b border-gray-400 mb-4">
+      <%= f.email_field :email, placeholder: "Email", class: "w-full py-2 border-none text-text outline-transparent" %>
+    </div>
+    <div class="border-b border-gray-400 mb-4">
+      <%= f.password_field :password, placeholder: "Password", class: "w-full py-2 border-none text-text outline-transparent" %>
+    </div>
+    <div class="text-center">
+    </div>
+  </div>
+<% end %>

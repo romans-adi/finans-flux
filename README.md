@@ -44,7 +44,18 @@ FinansFlux is your go-to app for effortless financial management. Track your exp
 
 ## ✨ Key Features<a name="key-features"></a>
 
-TBD
+- [x] Five main models: User, Group, Category, Transaction and Entity, following the ERD diagram.
+- [x] Associations between models, including one-to-many and many-to-one relationships.
+- [x] Generated corresponding migration files for each model with appropriate attributes.
+- [x] Added foreign keys and indexes to ensure data integrity and optimize database queries.
+- [x] Utilized timestamps for tracking creation and update times automatically.
+- [x] Followed naming conventions for models, tables, and columns as per Rails standards.
+- [x] Generated migration files to create necessary tables, columns, and associations.
+- [x] Data validations and tests for models to ensure data integrity.
+- [x] Model methods to process data and tests to validate their functionality.
+- [x] Integrated Devise gem for user authentication and registration.
+- [x] Integrated CanCanCan gem for user authorization (CRUD control).
+- [x] Implemented forms for user input and data submission.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -247,21 +258,9 @@ rspec spec/models/user.rb
 
 ## 🌟 Future Features <a name="future-features"></a>
 
-- [ ] Three main models: User, Group and Entity, following the ERD diagram.
-- [ ] Associations between models, including one-to-many and many-to-one relationships.
-- [ ] Generated corresponding migration files for each model with appropriate attributes.
-- [ ] Added foreign keys and indexes to ensure data integrity and optimize database queries.
-- [ ] Utilized timestamps for tracking creation and update times automatically.
-- [ ] Followed naming conventions for models, tables, and columns as per Rails standards.
-- [ ] Generated migration files to create necessary tables, columns, and associations.
-- [ ] Data validations and tests for models to ensure data integrity.
-- [ ] Model methods to process data and tests to validate their functionality.
 - [ ] CRUD actions in controllers for managing model instances.
 - [ ] View templates to render data and user interfaces.
-- [ ] Implemented forms for user input and data submission.
 - [ ] Optimized queries to handle n+1 problem.
-- [ ] Integrated Devise gem for user authentication and registration.
-- [ ] Integrated CanCanCan gem for user authorization (CRUD control).
 - [ ] Tests to verify the behavior of controller actions and responses.
 - [ ] Integration tests to cover user interactions.
 

@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'Proxima Nova';
+  /* stylelint-disable-next-line csstree/validator */
+  src: font-url('proxima-nova.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
