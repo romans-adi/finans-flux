@@ -40,7 +40,7 @@ textarea:focus {
   --tw-ring-color: transparent;
 }
 
-#category_name {
+.border-bottom-gray {
   border-bottom: 1px solid rgb(156 163 175) !important;
 }
 

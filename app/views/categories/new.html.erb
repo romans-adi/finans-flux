@@ -11,7 +11,7 @@
   </div>
   <div class="bg-second text-white text-center flex-grow relative">
     <div class="absolute inset-0 flex flex-col justify-between">
-<%= form_with model: @category, url: categories_path, class: "flex flex-col flex-1", method: :post do |f| %>
+      <%= form_with model: @category, url: categories_path, class: "flex flex-col flex-1", method: :post do |f| %>
         <% if @category.errors.any? %>
           <div class="text-red-600">
             <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
@@ -23,7 +23,7 @@
           </div>
         <% end %>
         <div class="bg-gray-200 p-3 flex flex-col flex-1">
-<%= f.text_field :name, id: "category_name", placeholder: "Name", autofocus: true, class: "w-full py-2 border-b border-gray-400 mb-4 bg-transparent outline-none text-text border-none focus:border-none focus:ring-0 focus:bg-transparent active:bg-transparent" %>
+          <%= f.text_field :name, id: "category_name", placeholder: "Name", autofocus: true, class: "border-bottom-gray w-full py-2 border-b border-gray-400 mb-4 bg-transparent outline-none text-text border-none focus:border-none focus:ring-0 focus:bg-transparent active:bg-transparent" %>
           <hr class="mt-2 mb-2" />
           <% icons = {
           shopping: "shopping-cart",
@@ -50,12 +50,16 @@
               </label>
             <% end %>
           </div>
+          <div class="mt-4">
+            <%= f.text_field :icon, id: "category_icon", placeholder: "Icon URL (e.g., https://example.com/icon.png)", class: "border-bottom-gray w-full py-2 border-b border-gray-400 bg-transparent outline-none text-text border-none focus:border-none focus:ring-0 focus:bg-transparent active:bg-transparent" %>
+          </div>
         </div>
-         <div class="bg-second">
-      <div class="text-center mt-auto p-8">
-<%= button_to "Create Category", categories_path, method: :post, class: "btn btn-outline-white border-2 border-white p-4 font-semibold hover:bg-white hover:text-second uppercase w-full", data: { turbo: false } %>
+        <div class="bg-second">
+          <div class="text-center mt-auto p-8">
+            <%= button_to "Create Category", categories_path, method: :post, class: "btn btn-outline-white border-2 border-white p-4 font-semibold hover:bg-white hover:text-second uppercase w-full", data: { turbo: false } %>
+          </div>
+        </div>
       </div>
-    </div>
-      <% end %>
+    <% end %>
   </div>
 </div>

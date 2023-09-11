@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  load_and_authorize_resource
   before_action :authenticate_user!
   before_action :set_category, only: %i[show edit update destroy]
 
@@ -39,10 +40,6 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @category.destroy
     redirect_to categories_url, notice: 'Category was successfully destroyed.'
-  end
-
-  def total_amount(user_id)
-    movements.where(author_id: user_id).sum(:amount)
   end
 
   private
