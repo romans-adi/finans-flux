@@ -4,6 +4,6 @@ class User < ApplicationRecord
   validates :password, presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :groups
-  has_many :entities, foreign_key: 'author_id'
+  has_many :categories
+  has_many :movements, foreign_key: 'author_id'
 end

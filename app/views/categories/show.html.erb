@@ -1,0 +1,44 @@
+<div class="menu">
+  <a href="/categories" class="text-light"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="36" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+    </svg>
+  </a>
+<h2 class="text-light text-center uppercase">Movements</h2>
+<span><%= link_to "List of All", movements_path, class: "text-light text-center"%></span>
+</div>
+
+<div class="mb-3 col-12 row row-cols-2 p-3  bg-body opacity-75">
+
+<h3 class="col-12 row row-cols-2 bg-body opacity-75"><span><%= @category.name %></span> <span class="text-end">$<%= Category.total_amount(current_user.id)%></span></h3>
+</div>
+<div class="col-10 offset-1 mt-2 p-2">
+  <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+
+        <% if @movements.empty? %>
+          <p>No transactions have been added yet.</p>
+        <% else %>
+         <% @movements.each do |movement| %>
+           <div class="row row-cols-1 shadow p-3 mb-2 bg-body opacity-75">
+           <img src="<%= @category.icon%>" class="col-4">
+            <div class="col-8">
+            <p class="row row-cols-2"><span><%= movement.name%></span> <span class="text-dark text-end"> <%= movement.amount%></span></p>
+            <div class="row row-cols-2">
+               <small ><%= movement.created_at.strftime("%d %b %Y") %></small>
+               <%= link_to 'Edit this Transaction', "#{edit_movement_path(movement.id)}?category_id=#{@category.id}", class:"btn btn-outline-success btn-sm" %>
+            </div>
+           </div>
+           </div>
+         <% end %>
+
+       <% end %>
+
+
+</div>
+<div class="btn_dev1 fixed-bottom p-3">
+ <%= link_to 'ADD NEW TRANSACTION',  "#{new_movement_path}?category_id=#{@category.id}", class:"btn btn-outline-light pt-3 pb-3 log-btn" %>
+</div>

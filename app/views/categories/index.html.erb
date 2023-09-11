@@ -1,21 +1,50 @@
-<div class="col-12 main_con">
+<div class="menu">
+  <h2 class="text-gray-200 text-center">Categories</h2>
+  <% if(user_signed_in?) %>
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo: false }, class: "text-gray-200 text-center me-3" %>
+  <% end %>
+</div>
+
+<div class="col-span-12 main_con">
   <div>
-    <% if @categories.any? %>
+    <% if @categories.length > 0 %>
       <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
       <% end %>
-      <ul>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+
+<h3 class="col-span-12 row row-cols-2 p-3 bg-body opacity-75">
+  <span>Total amount:</span>
+  <span class="text-right">$<%= @categories.sum { |category| category.movements.sum(:amount) } %></span>
+</h3>
+
+      <div>
         <% @categories.each do |category| %>
-          <li><%= category.name %></li>
+          <div class="col-span-10 bg-body col-start-2 row row-cols-2 shadow p-3 mt-3 opacity-75">
+
+            <img src="<%= category.icon %>" class="col-span-4">
+            <div class="col-span-8">
+              <div class="row row-cols-2 text-secondary">
+                <%= link_to category.name, category_path(category.id), class: "text-blue-500" %>
+                <p id="amount" class="text-right text-dark">$<%= category.movements.sum(:amount) %></p>
+              </div>
+              <hr />
+              <div class="row row-cols-2">
+                <small><%= category.created_at.strftime("%d %b %Y") %></small>
+                <%= link_to "Delete", @category, method: :delete, class: "btn btn-primary btn-sm" %>
+              </div>
+            </div>
+          </div>
         <% end %>
-      </ul>
+      </div>
     <% else %>
-      <p>No categories found.</p>
+      <i class="welcome text-center">Welcome To The Category Page No Category Exists Please Add One!</i>
     <% end %>
   </div>
+</div>
 
-<% if user_signed_in? %>
-        <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "relative md:ml-4 text-white font-semibold w-full px-4 py-2 bg-red-600 hover:bg-red-800 hover:no-underline" %>
-        <% end %>
-
+<div class="btn_dev1 fixed bottom-4 col-span-12">
+  <%= link_to 'ADD NEW CATEGORY', new_category_path, class: "btn btn-outline-light py-3 px-4 log-btn" %>
 </div>
