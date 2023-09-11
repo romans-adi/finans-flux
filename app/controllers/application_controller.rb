@@ -4,6 +4,16 @@ class ApplicationController < ActionController::Base
   skip_before_action :authenticate_user!, only: [:index], if: -> { controller_name == 'splash' }
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i[full_name email password])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password,])
+  end
+
+  protected
+
+  def after_sign_in_path_for(_resource)
+    categories_path
+  end
+
+  def after_sign_out_path_for(_resource)
+    splash_root_path
   end
 end

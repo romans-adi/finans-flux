@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-    registrations: 'registrations',
-  }, path: '', path_names: {
+
+  devise_for :users, path: '', path_names: {
     sign_in: 'login',
     sign_out: 'logout',
     password: 'reset_password',
@@ -11,5 +10,14 @@ Rails.application.routes.draw do
     sign_up: '',
   }
 
-  root 'splash#index'
+  root 'splash#index', as: :splash_root
+
+  authenticated :user do
+    root 'categories#index', as: :authenticated_root
+  end
+
+  resources :categories do
+    resources :transactions
+  end
+
 end
