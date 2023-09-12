@@ -10,17 +10,16 @@
       </a>
     </div>
   </div>
-
   <div class="bg-second text-white text-center flex-grow relative">
     <div class="absolute inset-0 flex flex-col justify-between">
-    <% if @categories.length > 0 %>
-      <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
-      <% end %>
-      <% icons = {
+      <% if @categories.length > 0 %>
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+        <% icons = {
   shopping: "fa-shopping-cart",
   transfers: "fa-exchange-alt",
   transportation: "fa-bus",
@@ -32,37 +31,37 @@
   health: "fa-heartbeat",
   entertaiments: "fa-film"
 } %>
-      <div class="flex flex-col space-y-4 flex-1 bg-gray-200">
-        <% @categories.each do |category| %>
-          <div class="bg-white flex items-center p-3 cursor-pointer hover:bg-gray-100 mt-4 mx-4 px-4">
-            <% if category.icon.in?(['shopping', 'transfers', 'transportation', 'groceries', 'services', 'restaurants', 'utilities', 'cash', 'health', 'entertaiments']) %>
-              <i class="fas <%= icons[category.icon.to_sym] %> text-xl bg-second p-4 text-white rounded-lg"></i>
-            <% else %>
-              <img src="<%= category.icon %>" class="w-12 h-12" alt="<%= category.name %> Icon">
-            <% end %>
-            <div class="text-text flex-grow ml-4 text-left">
-              <div class="text-text">
-                <%= link_to category.name, category_movements_path(category), class: "text-text" %>
+        <div class="flex flex-col space-y-4 flex-1 bg-gray-200">
+          <% @categories.each do |category| %>
+            <div class="bg-white flex items-center p-3 cursor-pointer hover:bg-gray-100 mt-4 mx-4 px-4">
+              <% if category.icon.in?(['shopping', 'transfers', 'transportation', 'groceries', 'services', 'restaurants', 'utilities', 'cash', 'health', 'entertaiments']) %>
+                <i class="fas <%= icons[category.icon.to_sym] %> text-xl bg-second p-4 text-white rounded-lg"></i>
+              <% else %>
+                <img src="<%= category.icon %>" class="w-12 h-12" alt="<%= category.name %> Icon">
+              <% end %>
+              <div class="text-text flex-grow ml-4 text-left">
+                <div class="text-text">
+                  <%= link_to category.name, category_movements_path(category), class: "text-text" %>
+                </div>
+                <div class="text-text">
+                  <small><%= category.created_at.strftime("%d %b %Y") %></small>
+                </div>
               </div>
               <div class="text-text">
-                <small><%= category.created_at.strftime("%d %b %Y") %></small>
+                <p class="text-right text-dark">$<%= category.total_amount(current_user.id) %></p>
               </div>
             </div>
-            <div class="text-text">
-              <p class="text-right text-dark">$<%= category.total_amount(current_user.id) %></p>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="flex flex-col justify-center align-center h-full">
-        <div class="text-center text-2xl my-auto">There is no any category created yet.</div>
-      </div>
-    <% end %>
-    <div class="bg-second">
-      <div class="text-center mt-auto p-8 text-white w-full flex mx-auto">
-        <%= link_to "Add Category", new_category_path, class: "text-center justify-center btn btn-outline-white border-2 flex flex-1 border-white p-4 font-semibold hover:bg-white hover:text-second uppercase w-full", data: { turbo: false } %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="flex flex-col justify-center align-center h-full">
+          <div class="text-center text-2xl my-auto">There is no any category created yet.</div>
+        </div>
+      <% end %>
+      <div class="bg-second">
+        <div class="text-center mt-auto p-8 text-white w-full flex mx-auto">
+          <%= link_to "Add Category", new_category_path, class: "text-center justify-center btn btn-outline-white border-2 flex flex-1 border-white p-4 font-semibold hover:bg-white hover:text-second uppercase w-full", data: { turbo: false } %>
+        </div>
       </div>
     </div>
   </div>
-</div>

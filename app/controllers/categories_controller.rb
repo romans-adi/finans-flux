@@ -33,20 +33,6 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def update
-    if @category.update(category_params)
-      redirect_to category_url(@category), notice: 'Category was successfully updated.'
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
-  def destroy
-    @category = Category.find(params[:id])
-    @category.destroy
-    redirect_to categories_url, notice: 'Category was successfully destroyed.'
-  end
-
   private
 
   def set_category

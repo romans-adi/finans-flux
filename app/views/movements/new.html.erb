@@ -1,4 +1,23 @@
-<div>
-  <h1 class="font-bold text-4xl">Entities#new</h1>
-  <p>Find me in app/views/entities/new.html.erb</p>
-</div>
+<%= form_with(model: [@category, @movement], url: category_movements_path(@category), local: true) do |f| %>
+  <% if @movement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@movement.errors.count, "error") %> prohibited this movement from being saved:</h2>
+      <ul>
+        <% @movement.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :name, "Transaction Name" %>
+    <%= f.text_field :name, placeholder: "Transaction Name", required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :amount, "Amount" %>
+    <%= f.number_field :amount, placeholder: "Amount", required: true %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Create Movement" %>
+  </div>
+<% end %>

@@ -37,23 +37,23 @@
             health: "heartbeat",
             entertaiments: "film"
           } %>
-  <div class="flex flex-wrap" data-controller="category-selection">
-    <% icons.each do |category, icon| %>
-      <input type="radio" name="category[icon]" id="category_<%= category %>" value="<%= category %>" class="hidden" />
-      <label
+          <div class="flex flex-wrap" data-controller="category-selection">
+            <% icons.each do |category, icon| %>
+              <input type="radio" name="category[icon]" id="category_<%= category %>" value="<%= category %>" class="hidden" />
+              <label
         class="icon-label bg-second text-white p-2 mr-2 mb-2 cursor-pointer transition-transform transform hover:scale-105"
         for="category_<%= category %>"
         data-action="click->category-selection#select"
-        data-category="<%= category %>"
-      >
-        <i class="fas fa-<%= icon %> text-xl"></i>
-      </label>
-    <% end %>
-  </div>
-        <%= f.label :custom_icon_url, class: "block text-text" do %>
-        <%= f.text_field :custom_icon_url, id: "custom_icon_url", placeholder: "Icon URL (e.g., https://example.com/icon.png)", class: "border-bottom-gray w-full py-2 border-b border-gray-400 mb-4 bg-transparent outline-none text-text border-none focus:border-none focus:ring-0 focus:bg-transparent active:bg-transparent" %>
-      <% end %>
-  <%= f.hidden_field :icon, id: "category_icon", data: { target: 'category-selection.icon' } %>
+                data-category="<%= category %>"
+                >
+                <i class="fas fa-<%= icon %> text-xl"></i>
+              </label>
+            <% end %>
+          </div>
+          <%= f.label :custom_icon_url, class: "block text-text" do %>
+            <%= f.text_field :custom_icon_url, id: "custom_icon_url", placeholder: "Icon URL (e.g., https://example.com/icon.png)", class: "border-bottom-gray w-full py-2 border-b border-gray-400 mb-4 bg-transparent outline-none text-text border-none focus:border-none focus:ring-0 focus:bg-transparent active:bg-transparent" %>
+          <% end %>
+          <%= f.hidden_field :icon, id: "category_icon", data: { target: 'category-selection.icon' } %>
         </div>
         <div class="bg-second">
           <div class="text-center mt-auto p-8 text-white w-full flex">

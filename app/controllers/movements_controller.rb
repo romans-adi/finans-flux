@@ -1,51 +1,38 @@
 class MovementsController < ApplicationController
-  before_action :set_movement, only: %i[show edit update destroy]
+  before_action :set_category, only: %i[index new show create]
 
   def index
-    @movements = Movement.all
-    @categories = Category.all
-    @categories = Category.where(author_id: current_user.id)
-    @category = Category.find(params[:id])
+    @user = current_user
+    @category = Category.find(params[:category_id])
+    @movement = @category.movements.build
+    @movements = @category.movements.order(created_at: :desc)
+    @total_amount = @category.movements.sum(:amount)
+  end
+
+  def show
+    @user = current_user
+    @category = Category.find(params[:category_id])
+    @movement = @category.movements.find(params[:id])
   end
 
   def new
+    @category = Category.find(params[:category_id])
     @movement = Movement.new
-    @categories = Category.where(author_id: current_user.id) || []
+    @categories = Category.where(author_id: current_user.id)
     @category_id = params[:category_id].to_i
   end
 
   def create
-    category_ids = movement_params[:category_ids].reject(&:empty?).map(&:to_i)
-    @movement = Movement.new(movement_params.except(:category_ids, :category_id))
-
-    category_ids.each do |id|
-      category = Category.find(id)
-      category.movements << @movement
-    end
+    @category = Category.find(params[:category_id])
+    @movement = Movement.new(movement_params)
+    @movement.category_id = @category.id
+    @movement.user = current_user
 
     if @movement.save
-      redirect_to category_url(movement_params[:category_id]), notice: 'Transaction was successfully created.'
+      redirect_to category_movements_path(@category), notice: 'Transaction was successfully created.'
     else
-      render :new, status: :unprocessable_movement
+      render :new, status: :unprocessable_entity
     end
-  end
-
-  def edit
-    @categories = Category.where(author_id: current_user.id) || []
-    @category_id = params[:category_id].to_i
-  end
-
-  def update
-    if @movement.update(movement_params)
-      redirect_to movement_url(@movement), notice: 'Movement was successfully updated.'
-    else
-      render :edit, status: :unprocessable_movement
-    end
-  end
-
-  def destroy
-    @movement.destroy
-    redirect_to movements_url, notice: 'Movement was successfully destroyed.'
   end
 
   private
@@ -54,7 +41,11 @@ class MovementsController < ApplicationController
     @movement = Movement.find(params[:id])
   end
 
+  def set_category
+    @category = Category.find(params[:category_id])
+  end
+
   def movement_params
-    params.require(:movement).permit(:name, :amount, :category_id, category_ids: []).merge(author_id: current_user.id)
+    params.require(:movement).permit(:name, :amount, category_ids: [])
   end
 end
