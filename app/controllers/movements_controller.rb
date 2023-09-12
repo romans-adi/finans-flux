@@ -3,6 +3,9 @@ class MovementsController < ApplicationController
 
   def index
     @movements = Movement.all
+    @categories = Category.all
+    @categories = Category.where(author_id: current_user.id)
+    @category = Category.find(params[:id])
   end
 
   def new

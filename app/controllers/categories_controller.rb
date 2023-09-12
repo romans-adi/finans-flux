@@ -4,7 +4,8 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: %i[show edit update destroy]
 
   def index
-    @categories = Category.where(author_id: current_user.id) || []
+    @categories = Category.all
+    @categories = Category.where(author_id: current_user.id)
   end
 
   def show
