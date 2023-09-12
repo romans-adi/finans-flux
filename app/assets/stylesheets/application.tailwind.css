@@ -47,3 +47,8 @@ textarea:focus {
 input[type="radio"]:checked + label {
   @apply bg-main;
 }
+
+.items-list {
+  height: calc(100vh + 3rem);
+  overflow-y: auto;
+}

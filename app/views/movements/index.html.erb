@@ -1,4 +1,4 @@
-<div class="flex flex-col h-screen">
+<div class="flex flex-col">
   <div class="bg-main text-white text-center py-6 flex">
     <div class="flex justify-center relative items-center w-full">
       <a href="<%= categories_path %>" class="text-white ml-2 absolute left-0 pl-2 cursor-pointer">
@@ -7,41 +7,67 @@
         </svg>
       </a>
       <h2 class="uppercase text-xl"><%= @category.name %></h2>
-      <a href="<%= new_category_movement_path(@category) %>" class="text-white ml-2 absolute right-0 pr-2 cursor-pointer">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block align-middle" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-        </svg>
-      </a>
     </div>
   </div>
-  <div class="bg-white p-4">
-    <h3 class="text-center text-text">
+  <div class="bg-main">
+    <h3 class="text-center text-white">
+      <div class="shadow-md p-4">
       Total Amount: $<%= @total_amount %>
     </h3>
-  </div>
-  <div class="bg-gray-200 text-text flex-grow relative">
-    <div class="px-4 py-6">
-      <% if @movements.any? %>
-        <% @movements.each do |movement| %>
-          <%= link_to movement.name, category_movement_path(@category, movement), class: "text-decoration-none" %>
-          <div class="bg-white flex items-center p-3 mb-4">
-            <div class="flex-grow">
-              <div class="text-text">
-                <small><%= movement.created_at&.strftime("%d %b %Y") %></small>
-              </div>
-            </div>
-            <div class="text-right">
-              $<%= movement.amount %>
-            </div>
-          </div>
-        <% end %>
-      <% else %>
-        <p class="text-center text-text">No movements in this category yet.</p>
-      <% end %>
     </div>
   </div>
-  <div class="fixed bottom-4">
-    <a href="<%= new_category_movement_path(@category) %>" class="block bg-main text-white text-center py-3 hover:bg-dark">
-      Add a New movement
-    </a>
+        <% icons = {
+  shopping: "fa-shopping-cart",
+  transfers: "fa-exchange-alt",
+  transportation: "fa-bus",
+  groceries: "fa-shopping-basket",
+  services: "fa-wrench",
+  restaurants: "fa-utensils",
+  utilities: "fa-bolt",
+  cash: "fa-money-bill-wave",
+  health: "fa-heartbeat",
+  entertaiments: "fa-film"
+} %>
+  <div class="bg-gray-200 text-text flex-grow relative overflow-y-auto">
+    <div class="px-4 py-6">
+<% if @movements.any? %>
+  <div class="bg-gray-200 text-text relative">
+    <div class="px-4 py-6 items-list">
+      <% @movements.each do |movement| %>
+        <%= link_to category_movement_path(@category, movement), class: "text-decoration-none" do %>
+        <div class="bg-white flex items-center p-3 mb-4">
+                <div class="text-text ml-4 text-left">
+        <% if @category.icon.in?(['shopping', 'transfers', 'transportation', 'groceries', 'services', 'restaurants', 'utilities', 'cash', 'health', 'entertaiments']) %>
+          <i class="fas <%= icons[@category.icon.to_sym] %> text-xl bg-second p-4 text-white rounded-lg"></i>
+        <% else %>
+          <img src="<%= @category.icon %>" class="w-12 h-12" alt="<%= @category.name %> Icon">
+        <% end %>
+      </div>
+          <div class="flex-grow ml-4 text-left">
+                    <div class="text-text">
+          <%= movement.name %>
+        </div>
+            <div class="text-text">
+              <small><%= movement.created_at&.strftime("%d %b %Y") %></small>
+            </div>
+          </div>
+          <div class="text-right">
+            $<%= movement.amount %>
+          </div>
+        </div>
+      <% end %>
+            <% end %>
+    </div>
   </div>
+<% else %>
+  <div class="flex flex-col justify-center align-center h-full">
+    <p class="text-center text-text">No movements in this category yet.</p>
+  </div>
+<% end %>
+    </div>
+  </div>
+      <div class="bg-second z-40 absolute bottom-0 w-full">
+        <div class="text-center mt-auto p-8 text-white w-full flex mx-auto">
+          <%= link_to "Add Transaction", new_category_movement_path(@category), class: "text-center justify-center btn btn-outline-white border-2 flex flex-1 border-white p-4 font-semibold hover:bg-white hover:text-second uppercase w-full", data: { turbo: false } %>
+        </div>
+      </div>
