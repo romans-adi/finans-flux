@@ -20,26 +20,10 @@
       <% if alert %>
         <p class="alert alert-danger"><%= alert %></p>
       <% end %>
-      <% icons = {
-  shopping: "fa-shopping-cart",
-  transfers: "fa-exchange-alt",
-  transportation: "fa-bus",
-  groceries: "fa-shopping-basket",
-  services: "fa-wrench",
-  restaurants: "fa-utensils",
-  utilities: "fa-bolt",
-  cash: "fa-money-bill-wave",
-  health: "fa-heartbeat",
-  entertaiments: "fa-film"
-} %>
       <div class="flex flex-col space-y-4 flex-1 bg-gray-200 items-list">
         <% @categories.each do |category| %>
           <div class="bg-white flex items-center p-3 cursor-pointer hover:bg-gray-100 mt-4 mx-4 px-4">
-            <% if category.icon.in?(['shopping', 'transfers', 'transportation', 'groceries', 'services', 'restaurants', 'utilities', 'cash', 'health', 'entertaiments']) %>
-              <i class="fas <%= icons[category.icon.to_sym] %> text-xl bg-second p-4 text-white rounded-lg"></i>
-            <% else %>
-              <img src="<%= category.icon %>" class="w-12 h-12" alt="<%= category.name %> Icon">
-            <% end %>
+<%= category_icon(category) %>
             <div class="text-text flex-grow ml-4 text-left">
               <div class="text-text">
                 <%= link_to category.name, category_movements_path(category), class: "text-text" %>

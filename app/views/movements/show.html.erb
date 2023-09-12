@@ -9,29 +9,13 @@
       <h2 class="uppercase text-xl"><%= @movement.name %></h2>
     </div>
   </div>
-  <% icons = {
-  shopping: "fa-shopping-cart",
-  transfers: "fa-exchange-alt",
-  transportation: "fa-bus",
-  groceries: "fa-shopping-basket",
-  services: "fa-wrench",
-  restaurants: "fa-utensils",
-  utilities: "fa-bolt",
-  cash: "fa-money-bill-wave",
-  health: "fa-heartbeat",
-  entertaiments: "fa-film"
-} %>
   <div class="flex flex-col flex-1 bg-gray-200 p-4">
     <div class="bg-white pt-4 px-4">
       <div class="flex items-center justify-center">
-        <div class="text-text flex-grow ml-4 text-left">
-          <% if @category.icon.in?(['shopping', 'transfers', 'transportation', 'groceries', 'services', 'restaurants', 'utilities', 'cash', 'health', 'entertaiments']) %>
-            <i class="fas <%= icons[@category.icon.to_sym] %> text-xl bg-second p-4 text-white rounded-lg"></i>
-          <% else %>
-            <img src="<%= @category.icon %>" class="w-12 h-12" alt="<%= @category.name %> Icon">
-          <% end %>
+        <div class="text-text ml-4 text-left">
+          <%= category_icon(@category) %>
         </div>
-        <div class="text-text flex-grow text-center">
+        <div class="text-text flex-grow ml-6 text-left">
           <%= @movement.name %>
         </div>
       </div>
