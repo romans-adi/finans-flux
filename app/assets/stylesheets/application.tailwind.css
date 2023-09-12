@@ -39,3 +39,16 @@ textarea:focus {
   --tw-ring-offset-color: transparent;
   --tw-ring-color: transparent;
 }
+
+.border-bottom-gray {
+  border-bottom: 1px solid rgb(156 163 175) !important;
+}
+
+input[type="radio"]:checked + label {
+  @apply bg-main;
+}
+
+.items-list {
+  height: calc(100vh + 3rem);
+  overflow-y: auto;
+}

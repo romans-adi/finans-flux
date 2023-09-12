@@ -56,6 +56,9 @@ FinansFlux is your go-to app for effortless financial management. Track your exp
 - [x] Integrated Devise gem for user authentication and registration.
 - [x] Integrated CanCanCan gem for user authorization (CRUD control).
 - [x] Implemented forms for user input and data submission.
+- [x] CRUD actions in controllers for managing model instances.
+- [x] View templates to render data and user interfaces.
+- [x] Optimized queries to handle n+1 problem.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -258,9 +261,6 @@ rspec spec/models/user.rb
 
 ## 🌟 Future Features <a name="future-features"></a>
 
-- [ ] CRUD actions in controllers for managing model instances.
-- [ ] View templates to render data and user interfaces.
-- [ ] Optimized queries to handle n+1 problem.
 - [ ] Tests to verify the behavior of controller actions and responses.
 - [ ] Integration tests to cover user interactions.
 
