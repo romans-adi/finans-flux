@@ -35,7 +35,8 @@
           <% @categories.each do |category| %>
             <div class="bg-white flex items-center p-3 cursor-pointer hover:bg-gray-100">
               <% if category.icon.in?(['shopping', 'transfers', 'transportation', 'groceries', 'services', 'restaurants', 'utilities', 'cash', 'health', 'entertaiments']) %>
-        <i class="fas <%= icons[category.icon.to_sym] %> text-2xl text-white p-4 rounded-lg bg-second"></i>
+                <i class="fas <%= icons[category.icon.to_sym] %> text-2xl text-white p-2 rounded-lg bg-second"></i>
+                <div class="">SUKA</div>
               <% else %>
                 <img src="<%= category.icon %>" class="w-12 h-12 mr-3" alt="<%= category.name %> Icon">
               <% end %>

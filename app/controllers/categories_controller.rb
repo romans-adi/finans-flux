@@ -19,7 +19,11 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    @category.icon = params[:category][:icon]
+    @category.icon = if params[:category][:custom_icon_url].present?
+                       params[:category][:custom_icon_url]
+                     else
+                       params[:category][:icon]
+                     end
 
     if @category.save
       redirect_to categories_url, notice: 'Category was successfully created.'

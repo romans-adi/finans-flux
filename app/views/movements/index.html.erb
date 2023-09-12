@@ -1,4 +1,78 @@
-<div>
-  <h1 class="font-bold text-4xl">Entities#index</h1>
-  <p>Find me in app/views/entities/index.html.erb</p>
+Avidus Mentis, [2023-09-12 07:16]
+<div class="flex flex-col h-screen">
+  <!-- Header -->
+  <div class="bg-main text-white text-center py-6 flex">
+    <div class="flex justify-center relative items-center w-full">
+      <!-- Back button -->
+      <a href="<%= authenticated_root_path %>" class="text-white ml-2 absolute left-0 pl-2 cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block align-middle" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+      </a>
+      <!-- Category name -->
+      <h2 class="uppercase text-xl"><%= @category.name %></h2>
+      <!-- New movement button -->
+      <a href="<%= new_category_movement_path(@category) %>" class="text-white ml-2 absolute right-0 pr-2 cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block align-middle" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Total amount -->
+  <div class="bg-white p-4">
+    <h3 class="text-center text-text">
+      Total Amount: $<%= @total_amount %>
+    </h3>
+  </div>
+
+  <!-- List of movements -->
+  <div class="bg-gray-200 text-text flex-grow relative">
+    <div class="px-4 py-6">
+      <!-- movement list here -->
+      <% if @movements.any? %>
+        <% @movements.each do |movement| %>
+          <div class="bg-white flex items-center p-3 mb-4">
+            <!-- movement details here -->
+            <div class="flex-grow">
+              <div class="text-text">
+                <!-- movement name -->
+                <%= movement.name %>
+              </div>
+              <div class="text-text">
+                <!-- movement date -->
+                <small><%= movement.created_at.strftime("%d %b %Y") %></small>
+              </div>
+            </div>
+            <div class="text-right text-dark">
+              <!-- movement amount -->
+              $<%= movement.amount %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p class="text-center text-text">No movements in this category yet.</p>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- New movement button -->
+  <div class="fixed bottom-4">
+    <a href="<%= new_category_movement_path(@category) %>" class="block bg-main text-white text-center py-3 hover:bg-dark">
+      Add a New movement
+    </a>
+  </div>
 </div>
+
+Avidus Mentis, [2023-09-12 07:16]
+<%= form_with(model: [@category, @movement], local: true) do |f| %>
+  <%= f.text_field :name, placeholder: "Transaction Name" %>
+  <%= f.number_field :amount, placeholder: "Amount" %>
+
+<%= debug @categories %>
+<%= f.collection_select :category_id, @categories, :id, :name, prompt: "Select a Category" %>
+
+
+  <%= f.submit "Create Movement" %>
+<% end %>
