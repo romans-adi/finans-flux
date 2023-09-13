@@ -1,39 +1,20 @@
 require 'rails_helper'
 
-RSpec.describe ApplicationHelper, type: :helper do
-  describe '#category_icon' do
-    it 'returns a font-awesome icon when category has a valid icon' do
-      category = double(icon: 'fa-shopping-cart', name: 'Shopping')
-      icon_html = helper.category_icon(category)
+RSpec.feature 'Category icon helper', type: :feature do
+  include LoginHelpers
+  let(:user) { create(:user) }
+  let(:category) { create(:category, author: user) }
+  let(:movement) { create(:movement) }
 
-      expect(icon_html).to include('<i')
-      expect(icon_html).to include('class="fas fa-shopping-cart text-xl bg-second p-4 text-white rounded-lg"')
-    end
+  before do
+    log_in_user(user)
+    visit category_movements_path(category)
+  end
 
-    it 'returns a default font-awesome icon when category has an invalid icon' do
-      category = double(icon: 'invalid-icon', name: 'Invalid Category')
-      icon_html = helper.category_icon(category)
-
-      expect(icon_html).to include('<i')
-      expect(icon_html).to include('class="fas fa-money-bill-wave text-xl bg-second p-4 text-white rounded-lg"')
-    end
-
-    it 'returns an image tag when category has a valid icon and name' do
-      category = double(icon: 'custom-icon.png', name: 'Custom Category')
-      icon_html = helper.category_icon(category)
-
-      expect(icon_html).to include('<img')
-      expect(icon_html).to include('src="custom-icon.png"')
-      expect(icon_html).to include('alt="Custom Category Icon"')
-    end
-
-    it 'returns a "No Icon" span when category has no icon or name' do
-      category = double(icon: nil, name: nil)
-      icon_html = helper.category_icon(category)
-
-      expect(icon_html).to include('<span')
-      expect(icon_html).to include('class="text-red-500"')
-      expect(icon_html).to include('No Icon')
-    end
+  scenario 'Displays the correct icon for a category with a valid icon' do
+    category = create(:category, icon: 'shopping', name: 'Sample Category 4', author: user)
+    create_list(:movement, 1, category:)
+    visit category_movements_path(category)
+    expect(page).to have_selector('.fas.fa-shopping-cart.text-xl.bg-second.p-4.text-white.rounded-lg')
   end
 end

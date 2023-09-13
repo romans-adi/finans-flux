@@ -1,5 +1,4 @@
 require 'rails_helper'
-include LoginHelpers
 RSpec.feature 'Login', type: :feature do
   let(:user) { FactoryBot.create(:user) }
 
@@ -9,7 +8,7 @@ RSpec.feature 'Login', type: :feature do
     fill_in 'Password', with: user.password
     click_button 'Log In'
 
-    expect(page).to have_text('Sample Category')
+    expect(page).to have_text('There are no categories created yet.')
   end
 
   scenario 'User cannot log in with invalid credentials' do

@@ -11,8 +11,9 @@ RSpec.feature 'Add Category', type: :feature do
 
   scenario 'User can add a category with valid information' do
     visit new_category_path
-    category_icon = find('.icon-label', wait: 2)
-    category_icon.click
+    within('.category-selection') do
+      find('label[for="category_shopping"]').click
+    end
     fill_in 'category_name', with: 'New Category Name'
     click_button 'Save'
     expect(page).to have_content('Category was successfully created.')

@@ -5,7 +5,7 @@ RSpec.feature 'Categories Index', type: :feature do
   let(:user) { FactoryBot.create(:user) }
 
   scenario 'User sees a list of categories when there are categories' do
-    categories = create_list(:category, 3, author: user)
+    categories = create_list(:category, 3, icon: 'shopping', author: user)
 
     visit new_user_session_path
     log_in_user(user)

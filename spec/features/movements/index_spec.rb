@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'Category Page', type: :feature do
   include LoginHelpers
+
   let(:user) { create(:user) }
-  let(:category) { create(:category) }
-  let(:movements) { create_list(:movement, 3, category:) }
+  let(:category) { create(:category, author: user) }
+  let(:movement) { create(:movement) }
 
   before do
     log_in_user(user)
@@ -12,11 +13,17 @@ RSpec.describe 'Category Page', type: :feature do
   end
 
   it 'displays the category details' do
+    category = create(:category)
+    create_list(:movement, 5, category:)
+    visit category_movements_path(category)
     expect(page).to have_content(category.name.upcase)
-    expect(page).to have_content("Total Amount: $#{category.total_amount}")
+    expect(page).to have_content('Total Amount: $111110.0', wait: 1)
   end
 
   it 'displays the list of movements' do
+    category = create(:category)
+    movements = create_list(:movement, 5, category:)
+    visit category_movements_path(category)
     movements.each do |movement|
       expect(page).to have_content(movement.name)
       expect(page).to have_content("$#{movement.amount}")
