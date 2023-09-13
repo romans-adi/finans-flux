@@ -5,8 +5,10 @@ FactoryBot.define do
     password { 'password' }
     role { 'user' }
 
-    after(:create) do |user|
-      create(:category, author: user)
+    trait :with_category do
+      after(:create) do |user|
+        create(:category, author: user)
+      end
     end
   end
 

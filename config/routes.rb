@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   }
 
   root 'splash#index', as: :splash_root
+  get '/', to: 'splash#index', as: :root
 
   authenticated :user do
     root 'categories#index', as: :authenticated_root

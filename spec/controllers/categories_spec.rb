@@ -25,9 +25,9 @@ RSpec.describe CategoriesController, type: :controller do
   describe 'POST #create' do
     it 'creates a new category' do
       category_params = FactoryBot.attributes_for(:category)
-      expect {
+      expect do
         post :create, params: { category: category_params }
-      }.to change(Category, :count).by(1)
+      end.to change(Category, :count).by(1)
     end
 
     it 'redirects to categories_url after successful creation' do

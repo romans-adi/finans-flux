@@ -5,16 +5,12 @@ ruby '3.2.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'bullet'
-gem 'font-awesome-rails'
 gem 'rails', '~> 7.0.7'
 
 gem 'cancancan'
 gem 'devise'
 
 gem 'faker'
-
-# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem 'sprockets-rails'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
@@ -65,9 +61,11 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
+  gem 'font-awesome-rails'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'sprockets-rails'
   gem 'tailwindcss-rails', '~> 2.0'
 end
 

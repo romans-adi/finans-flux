@@ -30,6 +30,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'has many categories' do
+    user = create(:user)
     expect(user.categories.count).to eq(0)
   end
 

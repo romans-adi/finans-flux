@@ -31,6 +31,8 @@ RSpec.configure do |config|
     DatabaseCleaner.start
   end
 
+  Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
+
   config.around(:each) do |example|
     DatabaseCleaner.cleaning do
       example.run

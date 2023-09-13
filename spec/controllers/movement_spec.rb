@@ -16,7 +16,7 @@ RSpec.describe MovementsController, type: :controller do
   end
 
   describe 'GET #show' do
-    let(:movement) { FactoryBot.create(:movement, category: category) }
+    let(:movement) { FactoryBot.create(:movement, category:) }
 
     it 'returns a successful response' do
       get :show, params: { category_id: category.id, id: movement.id }
@@ -34,9 +34,9 @@ RSpec.describe MovementsController, type: :controller do
   describe 'POST #create' do
     it 'creates a new movement' do
       movement_params = FactoryBot.attributes_for(:movement)
-      expect {
+      expect do
         post :create, params: { category_id: category.id, movement: movement_params }
-      }.to change(Movement, :count).by(1)
+      end.to change(Movement, :count).by(1)
     end
 
     it 'redirects to category_movements_path after successful creation' do
