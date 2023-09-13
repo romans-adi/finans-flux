@@ -8,12 +8,6 @@ class CategoriesController < ApplicationController
     @categories = Category.where(author_id: current_user.id)
   end
 
-  def show
-    @category = Category.find(params[:id])
-    @movements = @category.movements
-    authorize! :read, @category
-  end
-
   def new
     @category = Category.new
   end

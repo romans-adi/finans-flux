@@ -3,9 +3,6 @@ Rails.application.routes.draw do
   get 'movements/show'
   get 'movements/new'
   get 'movements/create'
-  get 'movements/edit'
-  get 'movements/update'
-  get 'movements/destroy'
 
   devise_for :users, path: '', path_names: {
     sign_in: 'login',
@@ -26,5 +23,4 @@ Rails.application.routes.draw do
   resources :categories do
     resources :movements
   end
-
 end

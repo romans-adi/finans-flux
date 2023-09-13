@@ -3,6 +3,7 @@ require 'capybara/dsl'
 require 'selenium-webdriver'
 require 'shoulda/matchers'
 require 'cancan/matchers'
+require 'support/login_helper'
 
 Capybara.register_driver :selenium_firefox do |app|
   Capybara::Selenium::Driver.new(app, browser: :firefox)
@@ -17,6 +18,8 @@ RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
+
+  config.include LoginHelper, type: :controller
 
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
