@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :category do
     name { 'Sample Category' }
-    author { create(:user) }
+    association :author, factory: :user
   end
 end
