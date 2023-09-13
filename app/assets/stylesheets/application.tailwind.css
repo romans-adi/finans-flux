@@ -39,6 +39,7 @@ input[type="radio"]:checked + label {
 }
 
 .items-list {
-  height: calc(100vh + 3rem);
+  height: 110vh;
+  flex-grow: 1;
   overflow-y: auto;
 }
