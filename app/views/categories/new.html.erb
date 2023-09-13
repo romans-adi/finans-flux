@@ -37,7 +37,7 @@
             health: "heartbeat",
             entertaiments: "film"
           } %>
-          <div class="flex flex-wrap" data-controller="category-selection">
+          <div class="flex flex-wrap category-selection" data-controller="category-selection">
             <% icons.each do |category, icon| %>
               <input type="radio" name="category[icon]" id="category_<%= category %>" value="<%= category %>" class="hidden" />
               <label

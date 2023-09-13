@@ -10,15 +10,15 @@ module ApplicationHelper
       utilities: 'fa-bolt',
       cash: 'fa-money-bill-wave',
       health: 'fa-heartbeat',
-      entertaiments: 'fa-film'
+      entertainments: 'fa-film'
     }
 
-    icon_class = icons[category.icon.to_sym] || category.icon
+    icon_class = icons[category.name.parameterize.underscore.to_sym]
 
-    if icon_class.in?(%w[fa-shopping-cart fa-exchange-alt fa-bus fa-shopping-basket fa-wrench fa-utensils fa-bolt fa-money-bill-wave fa-heartbeat fa-film])
+    if icon_class.present?
       content_tag(:i, nil, class: "fas #{icon_class} text-xl bg-second p-4 text-white rounded-lg")
-    else
-      image_tag(icon_class, class: 'w-12 h-12', alt: "#{category.name} Icon")
+    elsif category.icon.present? && category.icon =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]
+      image_tag(category.icon, class: 'w-12 h-12', alt: "#{category.name} Icon")
     end
   end
 end

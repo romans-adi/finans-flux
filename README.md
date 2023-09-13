@@ -59,6 +59,8 @@ FinansFlux is your go-to app for effortless financial management. Track your exp
 - [x] CRUD actions in controllers for managing model instances.
 - [x] View templates to render data and user interfaces.
 - [x] Optimized queries to handle n+1 problem.
+- [x] Tests to verify the behavior of controller actions and responses.
+- [x] Integration tests to cover user interactions.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -142,6 +144,11 @@ If you want to populate the database you can run (this step is not required):
 ```
 rails db:seed
 ```
+
+To see the populated data you must log in with these credentials:
+
+> user@example.com
+> password
 
 3. To precompile assets for production deployment, execute the following command:
 
@@ -261,9 +268,9 @@ rspec spec/models/user.rb
 
 ## 🌟 Future Features <a name="future-features"></a>
 
-- [ ] Tests to verify the behavior of controller actions and responses.
-- [ ] Integration tests to cover user interactions.
+- [ ] User Confirmation Email: Implement a user confirmation email feature. When users sign up for your application, send them a confirmation email with a unique link. Users must click on the link to verify their email addresses and activate their accounts. This helps ensure that users provide valid email addresses and reduces the risk of fake or inactive accounts.
 
+- [ ] Card Tracking: Add a card tracking feature that allows users to input and manage their credit and debit cards. Users can enter card details, such as card type, number, expiration date, and issuer. This feature can also include options for users to track their card balances, credit limits, and transaction history. Card tracking can help users keep an organized record of their payment methods within the application.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
