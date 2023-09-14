@@ -20,26 +20,26 @@
           <p class="alert alert-danger"><%= alert %></p>
         <% end %>
         <div class="flex flex-col space-y-4 flex-1 bg-gray-200 items-list">
-<% @categories.each do |category| %>
-  <%= link_to category_movements_path(category), class: "hover:no-underline" do %>
-    <div class="bg-white flex items-center p-3 cursor-pointer hover:bg-gray-100 mt-4 mx-4 px-4">
-      <div class="category-icon">
-        <%= category_icon(category) %>
-      </div>
-      <div class="text-text flex-grow ml-4 text-left">
-        <div class="text-text">
-          <%= category.name %>
-        </div>
-        <div class="text-text">
-          <small><%= category.created_at.strftime("%d %b %Y") %></small>
-        </div>
-      </div>
-      <div class="text-text">
-        <p class="text-right text-dark">$<%= category.total_amount(current_user.id) %></p>
-      </div>
-    </div>
-  <% end %>
-<% end %>
+          <% @categories.each do |category| %>
+            <%= link_to category_movements_path(category), class: "hover:no-underline" do %>
+              <div class="bg-white flex items-center p-3 cursor-pointer hover:bg-gray-100 mt-4 mx-4 px-4">
+                <div class="category-icon">
+                  <%= category_icon(category) %>
+                </div>
+                <div class="text-text flex-grow ml-4 text-left">
+                  <div class="text-text">
+                    <%= category.name %>
+                  </div>
+                  <div class="text-text">
+                    <small><%= category.created_at.strftime("%d %b %Y") %></small>
+                  </div>
+                </div>
+                <div class="text-text">
+                  <p class="text-right text-dark">$<%= category.total_amount(current_user.id) %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
         </div>
       <% else %>
         <div class="flex flex-col justify-center align-center h-full bg-gray-200 text-text">
