@@ -17,16 +17,16 @@
     </div>
   </div>
   <div class="bg-gray-200 text-text flex-grow relative overflow-y-auto">
-    <div class="px-2 py-6">
+    <div class="p-2">
       <% if @movements.any? %>
         <div class="bg-gray-200 text-text relative">
-          <div class="px-4 py-6 items-list">
+          <div class="px-2 py-6 items-list">
             <% @movements.each do |movement| %>
               <%= link_to category_movement_path(@category, movement), class: "text-decoration-none" do %>
                 <div class="bg-white flex items-center p-3 mb-4">
                   <div class="text-text ml-4 text-left">
-                                  <div class="category-icon">
-                    <%= category_icon(@category) %>
+                    <div class="category-icon">
+                      <%= category_icon(@category) %>
                     </div>
                   </div>
                   <div class="flex-grow ml-4 text-left">

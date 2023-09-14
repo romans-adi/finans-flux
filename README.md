@@ -16,6 +16,8 @@ FinansFlux is your go-to app for effortless financial management. Track your exp
   - [Usage](#usage) 🧰
   - [Tests](#tests) :heavy_check_mark:
   - [Troubleshooting](#troubleshooting) :nut_and_bolt:
+- [Live Demo](#demo)
+- [Video Presentation](#video)
 - [Authors](#authors) 🖋️
 - [Future Features](#future-features) 🌟
 - [Contributing](#contributing) 🤝
@@ -217,7 +219,7 @@ If problems persist, you can refer to the official [Ruby on Rails Guides](https:
 
 ### Tests :heavy_check_mark:<a name="tests"></a>
 
-To run the tests for the Ultimate Recipe Assistant requests and models, ensure you are in the directory containing the test files.
+To run the tests for the Finans Flux requests and models, ensure you are in the directory containing the test files.
 
 1. Install RSpec:
 
@@ -235,7 +237,7 @@ end
 bundle install
 ```
 
-3. To set up RSpec in your app and create the Spec folder run:
+3. To set up RSpec in your app and create the spec folder run:
 
 ```
 rails generate rspec:install
@@ -247,13 +249,31 @@ rails generate rspec:install
 rspec spec/models
 ```
 
-5. Alternatively, you could run tests for any specific suit using the following command (an example for Food model):
+5. Alternatively, you could run tests for any specific suit using the following command (an example for Movement model):
 
 ```
-rspec spec/models/user.rb
+rspec spec/models/movement.rb
 ```
 
 6. All tests should pass without any errors or failures, ensuring that all models and their methods are functioning correctly.
+
+<!-- LIVE DEMO -->
+
+## :currency_exchange: Live Demo <a name="demo"></a>
+
+Experience Finans Flux in action with our live demo.
+Explore the features and functionality of our application firsthand at [Finans Flux Live Demo](https://finans-flux.onrender.com/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- VIDEO PRESENTATION -->
+
+## :tv: Video Presentation <a name="video"></a>
+
+For a quick overview of Finans Flux, watch [our video presentation](https://www.loom.com/share/ab897e224b894447b3f5e08983b2c217?sid=ea6359a9-c319-4366-bba9-960df8a5f02c) highlighting key features and benefits.
+Get a glimpse of what our platform can do in just a few minutes.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- AUTHORS -->
 
