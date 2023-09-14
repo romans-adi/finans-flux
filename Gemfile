@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
 
+gem 'sprockets-rails'
+gem 'tailwindcss-rails', '~> 2.0'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'bullet'
 gem 'rails', '~> 7.0.7'
@@ -65,8 +68,6 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
-  gem 'sprockets-rails'
-  gem 'tailwindcss-rails', '~> 2.0'
 end
 
 group :development do
