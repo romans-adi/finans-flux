@@ -1,14 +1,22 @@
 <!-- PROJECT DESCRIPTION -->
-<h1 align="center">FinansFlux</h1>
+<h1 align="center">Finans Flux</h1>
 
 <p align="center">
   <img src="https://github.com/romans-adi/finans-flux/assets/83185550/fd2316c2-39c9-4f44-a442-b27f7e3242a1" alt="logo-color" width="300" height="300" />
 </p>
 
-
 # <a name="about-project"></a>
-FinansFlux is your go-to app for effortless financial management. Track your expenses, create categories, and stay in control of your budget with ease, all in one streamlined platform. Say goodbye to financial stress and hello to financial clarity with FinansFlux.
+<p align="center">Finans Flux is your go-to app for effortless financial management.</p>
 
+<p align="center">With FinansFlux, you can:</p>
+
+- **Track Your Expenses:** Easily record and monitor your daily expenses, allowing you to stay on top of your spending habits.
+
+- **Create Categories:** Organize your expenses by creating custom categories, making it simple to see where your money is going.
+
+- **Budget Control:** Take charge of your finances by setting budgets within the app. FinansFlux helps you stick to your financial goals.
+
+<p align="center">Say goodbye to financial stress and hello to financial clarity with FinansFlux.</p>
 <!-- TABLE OF CONTENTS -->
 
 ## Table of Contents
