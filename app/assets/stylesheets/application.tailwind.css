@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@700&family=Outfit:wght@300;400;600&display=swap');
+
+body {
+  font-family: 'Proxima Nova', 'Inter', sans-serif;
+}
+
+#splash h1 {
+  font-family: 'Hind Siliguri', sans-serif;
+}
+
+[multiple]:focus,
+[type=email]:focus,
+[type=number]:focus,
+[type=password]:focus,
+[type=text]:focus,
+select:focus,
+textarea:focus {
+  --tw-ring-inset:
+    var(
+      --tw-empty,
+      /*!*/
+      /*!*/
+    );
+  --tw-ring-offset-width: 0;
+  --tw-ring-offset-color: transparent;
+  --tw-ring-color: transparent;
+}
+
+.border-bottom-gray {
+  border-bottom: 1px solid rgb(156 163 175) !important;
+}
+
+input[type="radio"]:checked + label {
+  @apply bg-main;
+}
+
+.items-list {
+  height: 110vh;
+  flex-grow: 1;
+  overflow-y: auto;
+}

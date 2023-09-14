@@ -1,0 +1,66 @@
+<div class="flex flex-col h-screen">
+  <div class="bg-main text-white text-center py-6 flex">
+    <div class="flex justify-center relative items-center w-full">
+      <a href="<%= categories_path %>" class="text-white ml-2 absolute left-0 pl-2 cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block align-middle" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+      </a>
+      <h2 class="uppercase text-xl">Add Category</h2>
+    </div>
+  </div>
+  <div class="bg-second text-white text-center flex-grow relative">
+    <div class="absolute inset-0 flex flex-col justify-between">
+      <%= form_with model: @category, url: categories_path, class: "flex flex-col flex-1", method: :post do |f| %>
+        <% if @category.errors.any? %>
+          <div class="text-red-600">
+            <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+            <ul>
+              <% @category.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="bg-gray-200 p-3 flex flex-col flex-1">
+          <%= f.text_field :name, id: "category_name", placeholder: "Name", autofocus: true, class: "border-bottom-gray w-full py-2 border-b border-gray-400 mb-4 bg-transparent outline-none text-text border-none focus:border-none focus:ring-0 focus:bg-transparent active:bg-transparent" %>
+          <hr class="mt-2 mb-2" />
+          <% icons = {
+            shopping: "shopping-cart",
+            transfers: "exchange-alt",
+            transportation: "bus",
+            groceries: "shopping-basket",
+            services: "wrench",
+            restaurants: "utensils",
+            utilities: "bolt",
+            cash: "money-bill-wave",
+            health: "heartbeat",
+            entertaiments: "film"
+          } %>
+          <div class="flex flex-wrap category-selection" data-controller="category-selection">
+            <% icons.each do |category, icon| %>
+              <input type="radio" name="category[icon]" id="category_<%= category %>" value="<%= category %>" class="hidden" />
+              <label
+        class="icon-label bg-second text-white p-2 mr-2 mb-2 cursor-pointer transition-transform transform hover:scale-105"
+        for="category_<%= category %>"
+        data-action="click->category-selection#select"
+                data-category="<%= category %>"
+                >
+                <i class="fas fa-<%= icon %> text-xl"></i>
+              </label>
+            <% end %>
+          </div>
+          <%= f.label :custom_icon_url, class: "block text-text" do %>
+            <%= f.text_field :custom_icon_url, id: "custom_icon_url", placeholder: "Icon URL (e.g., https://example.com/icon.png)", class: "border-bottom-gray w-full py-2 border-b border-gray-400 mb-4 bg-transparent outline-none text-text border-none focus:border-none focus:ring-0 focus:bg-transparent active:bg-transparent" %>
+          <% end %>
+          <%= f.hidden_field :icon, id: "category_icon", data: { target: 'category-selection.icon' } %>
+        </div>
+        <div class="bg-second">
+          <div class="text-center mt-auto p-8 text-white w-full flex">
+            <%= button_to "Save", categories_path, method: :post, class: "btn btn-outline-white border-2 border-white p-4 font-semibold hover:bg-white hover:text-second uppercase w-full", data: { turbo: false } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

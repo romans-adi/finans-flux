@@ -1,0 +1,55 @@
+<div class="flex flex-col h-screen">
+  <div class="bg-main text-white text-center py-6 flex">
+    <div class="flex justify-center relative items-center w-full">
+      <a href="<%= categories_path %>" class="text-white ml-2 absolute left-0 pl-2 cursor-pointer">
+        <i class="fas fa-bars text-2xl text-white"></i>
+      </a>
+      <h2 class="uppercase text-xl">Categories</h2>
+      <a href="#" class="text-white mr-2 absolute right-0 pr-2 cursor-pointer">
+        <i class="fas fa-search text-2xl"></i>
+      </a>
+    </div>
+  </div>
+  <div class="bg-second text-white text-center flex-grow relative">
+    <div class="absolute inset-0 flex flex-col justify-between">
+      <% if @categories.length > 0 %>
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+        <div class="flex flex-col space-y-4 flex-1 bg-gray-200 items-list">
+          <% @categories.each do |category| %>
+            <%= link_to category_movements_path(category), class: "hover:no-underline" do %>
+              <div class="bg-white flex items-center p-3 cursor-pointer hover:bg-gray-100 mt-4 mx-4 px-4">
+                <div class="category-icon">
+                  <%= category_icon(category) %>
+                </div>
+                <div class="text-text flex-grow ml-4 text-left">
+                  <div class="text-text">
+                    <%= category.name %>
+                  </div>
+                  <div class="text-text">
+                    <small><%= category.created_at.strftime("%d %b %Y") %></small>
+                  </div>
+                </div>
+                <div class="text-text">
+                  <p class="text-right text-dark">$<%= category.total_amount(current_user.id) %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="flex flex-col justify-center align-center h-full bg-gray-200 text-text">
+          <div class="text-center text-2xl my-auto">There are no categories created yet.</div>
+        </div>
+      <% end %>
+      <div class="bg-second z-40 bottom-0 w-full">
+        <div class="text-center mt-auto p-8 text-white w-full flex mx-auto">
+          <%= link_to "Add Category", new_category_path, class: "text-center justify-center btn btn-outline-white border-2 flex flex-1 border-white p-4 font-semibold hover:bg-white hover:text-second uppercase w-full", data: { turbo: false } %>
+        </div>
+      </div>
+    </div>
+  </div>
