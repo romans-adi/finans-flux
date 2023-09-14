@@ -10,7 +10,7 @@ module ApplicationHelper
       utilities: 'fa-bolt',
       cash: 'fa-money-bill-wave',
       health: 'fa-heartbeat',
-      entertainments: 'fa-film'
+      entertaiments: 'fa-film'
     }
 
     icon_class = icons[category.name.parameterize.underscore.to_sym]

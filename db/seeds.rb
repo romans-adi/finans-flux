@@ -7,7 +7,7 @@ user = User.create(
 categories = [
   { name: 'Groceries', icon: 'shopping-cart', author_id: user.id },
   { name: 'Utilities', icon: 'bolt', author_id: user.id },
-  { name: 'Entertainments', icon: 'film', author_id: user.id },
+  { name: 'Entertaiments', icon: 'film', author_id: user.id },
   { name: 'Transportation', icon: 'car', author_id: user.id },
   { name: 'Fav Cafe', icon: 'https://assets.stickpng.com/images/602fed66ff753f000410e746.png', author_id: user.id },
   { name: 'Fav Market', icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/AldiNord-WorldwideLogo.svg/1200px-AldiNord-WorldwideLogo.svg.png', author_id: user.id }
